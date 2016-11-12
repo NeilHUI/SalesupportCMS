@@ -21,7 +21,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    <a  href="student!queryAll.action">查询学生</a>
+    <a  href="student!queryAll.action">查询学生信息</a>
     
   </body>
 </html>
