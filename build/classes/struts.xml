@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
 <struts>
-	<package name="default" namespace="/" extends="struts-default">
-		<action name="student" class="com.xj.action.StudentAction">
-			<result name="listStudent">listStudent.jsp</result>
-			<result name="update">updateStudent.jsp</result>
+	<package name="default" namespace="/Admin" extends="struts-default">
+		
+		<action name="admin" class="com.xj.action.AdminAction">
+			<result name="index">index.jsp</result>
+			<result name="error">login.jsp</result>
+			<result name="listRepair">index.jsp</result>
 		</action>
 	</package>
+	
 </struts>    
