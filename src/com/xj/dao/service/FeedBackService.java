@@ -13,7 +13,7 @@ private FeedBackDao FBdao=new FeedBackDao();
 		return FBdao.QueryAllFeedBack();
 	}
 	
-	public FeedBack QueryFeedBack(int id){
+	public FeedBack QueryFeedBack(String id){
 		return FBdao.QueryFeedBackByID(id);
 	}
 	
@@ -21,7 +21,7 @@ private FeedBackDao FBdao=new FeedBackDao();
 		FBdao.InsertFeedBack(a);
 	}
 	
-	public void DeleteFeedBack(int id){
+	public void DeleteFeedBack(String id){
 		FBdao.DeleteFeedBack(id);
 	}
 	

@@ -1,14 +1,14 @@
 package com.xj.vo;
 
 public class Admin {
-private int Admin_ID;
+private String Admin_ID;
 private String Admin_Name;
 private String Admin_Pass;
 
-public int getAdmin_ID() {
+public String getAdmin_ID() {
 	return Admin_ID;
 }
-public void setAdmin_ID(int admin_ID) {
+public void setAdmin_ID(String admin_ID) {
 	Admin_ID = admin_ID;
 }
 public String getAdmin_Name() {

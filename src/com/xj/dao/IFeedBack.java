@@ -8,11 +8,11 @@ public interface IFeedBack {
 
 	public List<FeedBack> QueryAllFeedBack();
 
-	public FeedBack QueryFeedBackByID(int id);
+	public FeedBack QueryFeedBackByID(String id);
 
 	public void InsertFeedBack(FeedBack fb);
 
-	public void DeleteFeedBack(int id);
+	public void DeleteFeedBack(String id);
 
 	public void UpdateFeedBack(FeedBack fb);
 }

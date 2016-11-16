@@ -1,15 +1,18 @@
 package com.xj.vo;
 
+import java.sql.Date;
+
 public class Order {
-	private int Order_ID;
+	private String Order_ID;
 	private String Order_Name;
 	private String Order_Describe;
-	private String Order_Time;
-	private int User_ID;
-	public int getOrder_ID() {
+	private Date Order_Time;
+	private String User_ID;
+	
+	public String getOrder_ID() {
 		return Order_ID;
 	}
-	public void setOrder_ID(int order_ID) {
+	public void setOrder_ID(String order_ID) {
 		Order_ID = order_ID;
 	}
 	public String getOrder_Name() {
@@ -24,16 +27,16 @@ public class Order {
 	public void setOrder_Describe(String order_Describe) {
 		Order_Describe = order_Describe;
 	}
-	public String getOrder_Time() {
+	public Date getOrder_Time() {
 		return Order_Time;
 	}
-	public void setOrder_Time(String order_Time) {
+	public void setOrder_Time(Date order_Time) {
 		Order_Time = order_Time;
 	}
-	public int getUser_ID() {
+	public String getUser_ID() {
 		return User_ID;
 	}
-	public void setUser_ID(int user_ID) {
+	public void setUser_ID(String user_ID) {
 		User_ID = user_ID;
 	}
 	

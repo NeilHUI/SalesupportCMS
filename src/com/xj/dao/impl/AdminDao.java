@@ -25,7 +25,7 @@ public class AdminDao implements IAdminDao {
 		try {
 			while(rs.next()){
 				Admin a=new Admin();
-				a.setAdmin_ID(rs.getInt("Admin_ID"));
+				a.setAdmin_ID(rs.getString("Admin_ID"));
 				a.setAdmin_Name(rs.getString("admin_Name"));
 				a.setAdmin_Pass(rs.getString("Admin_Pass"));
 				list.add(a);
@@ -40,19 +40,19 @@ public class AdminDao implements IAdminDao {
 	}
 
 	@Override
-	public Admin QueryAdminByID(int id) {
+	public Admin QueryAdminByName(String name) {
 		// TODO Auto-generated method stub
 		util.getConnection();
-		sql="select * from AdminTable where Admin_ID=?";
+		sql="select * from AdminTable where Admin_Name=?";
 		List<Object> params=new ArrayList<Object>();
-		params.add(id);
+		params.add(name);
 		rs=util.query(sql, params);
 		Admin a=new Admin();
 		try {
 			while(rs.next()){				
 				a.setAdmin_Name(rs.getString("Admin_Name"));
 				a.setAdmin_Pass(rs.getString("Admin_Pass"));
-				a.setAdmin_ID(id);
+				a.setAdmin_ID(rs.getString("admin_ID"));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -77,7 +77,7 @@ public class AdminDao implements IAdminDao {
 	}
 
 	@Override
-	public void DeleteAdmin(int id) {
+	public void DeleteAdmin(String id) {
 		// TODO Auto-generated method stub
 		util.getConnection();
 		sql="delete from AdminTable where Admin_ID=?";

@@ -13,7 +13,7 @@ private UserDao Udao=new UserDao();
 		return Udao.QueryAllUser();
 	}
 	
-	public User QueryUser(int id){
+	public User QueryUser(String id){
 		return Udao.QueryUserByID(id);
 	}
 	
@@ -21,7 +21,7 @@ private UserDao Udao=new UserDao();
 		Udao.InsertUser(a);
 	}
 	
-	public void DeleteUser(int id){
+	public void DeleteUser(String id){
 		Udao.DeleteUser(id);
 	}
 	

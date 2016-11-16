@@ -8,11 +8,11 @@ public interface IRepair {
 
 	public List<Repair> QueryAllRepair();
 
-	public Repair QueryRepairByID(int id);
+	public Repair QueryRepairByID(String id);
 
 	public void InsertRepair(Repair r);
 
-	public void DeleteRepair(int id);
+	public void DeleteRepair(String id);
 
 	public void UpdateRepair(Repair r);
 }

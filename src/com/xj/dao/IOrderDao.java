@@ -7,11 +7,11 @@ import com.xj.vo.Order;
 public interface IOrderDao {
 	public List<Order> QueryAllOrder();
 
-	public Order QueryOrderByID(int id);
+	public Order QueryOrderByID(String id);
 
 	public void InsertOrder(Order A);
 
-	public void DeleteOrder(int id);
+	public void DeleteOrder(String id);
 
 	public void UpdateOrder(Order A);
 }

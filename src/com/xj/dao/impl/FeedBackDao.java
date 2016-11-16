@@ -25,10 +25,10 @@ public class FeedBackDao implements IFeedBack{
 		try {
 			while(rs.next()){
 				FeedBack fd=new FeedBack();
-				fd.setFB_ID(rs.getInt("fB_ID"));
-				fd.setP_ID(rs.getInt("p_ID"));
-				fd.setOrder_ID(rs.getInt("order_ID"));
-				fd.setFB_Score(rs.getString("fB_Score"));
+				fd.setFB_ID(rs.getString("fB_ID"));
+				fd.setP_ID(rs.getString("p_ID"));
+				fd.setOrder_ID(rs.getString("order_ID"));
+				fd.setFB_Score(rs.getDouble("fB_Score"));
 				fd.setFB_Comment(rs.getString("fB_Comment"));
 				list.add(fd);
 			}
@@ -42,7 +42,7 @@ public class FeedBackDao implements IFeedBack{
 	}
 
 	@Override
-	public FeedBack QueryFeedBackByID(int id) {
+	public FeedBack QueryFeedBackByID(String id) {
 		// TODO Auto-generated method stub
 		util.getConnection();
 		sql="select * from FeedBack where FB_ID=?";
@@ -52,9 +52,9 @@ public class FeedBackDao implements IFeedBack{
 		FeedBack fd=new FeedBack();
 		try {
 			while(rs.next()){				
-				fd.setP_ID(rs.getInt("p_ID"));
-				fd.setOrder_ID(rs.getInt("order_ID"));
-				fd.setFB_Score(rs.getString("fB_Score"));
+				fd.setP_ID(rs.getString("p_ID"));
+				fd.setOrder_ID(rs.getString("order_ID"));
+				fd.setFB_Score(rs.getDouble("fB_Score"));
 				fd.setFB_Comment(rs.getString("fB_Comment"));
 				fd.setFB_ID(id);
 			}
@@ -83,7 +83,7 @@ public class FeedBackDao implements IFeedBack{
 	}
 
 	@Override
-	public void DeleteFeedBack(int id) {
+	public void DeleteFeedBack(String id) {
 		// TODO Auto-generated method stub
 		util.getConnection();
 		sql="delete from FeedBack where FB_ID=?";

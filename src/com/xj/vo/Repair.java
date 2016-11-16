@@ -1,47 +1,50 @@
 package com.xj.vo;
 
+import java.sql.Date;
+
 public class Repair {
-	private int Repair_ID;
-	private int Repair_ISY;
-	private String Repair_StartT;
-	private String Repair_EndT;
-	private int Order_ID;
-	private int P_ID;
+	private String Repair_ID;
+	private String Repair_ISY;
+	private Date Repair_StartT;
+	private Date Repair_EndT;
+	private String Order_ID;
+	private String P_ID;
 	private String Repair_State;
-	public int getRepair_ID() {
+	
+	public String getRepair_ID() {
 		return Repair_ID;
 	}
-	public void setRepair_ID(int repair_ID) {
+	public void setRepair_ID(String repair_ID) {
 		Repair_ID = repair_ID;
 	}
-	public int getRepair_ISY() {
+	public String getRepair_ISY() {
 		return Repair_ISY;
 	}
-	public void setRepair_ISY(int repair_ISY) {
+	public void setRepair_ISY(String repair_ISY) {
 		Repair_ISY = repair_ISY;
 	}
-	public String getRepair_StartT() {
+	public Date getRepair_StartT() {
 		return Repair_StartT;
 	}
-	public void setRepair_StartT(String repair_StartT) {
+	public void setRepair_StartT(Date repair_StartT) {
 		Repair_StartT = repair_StartT;
 	}
-	public String getRepair_EndT() {
+	public Date getRepair_EndT() {
 		return Repair_EndT;
 	}
-	public void setRepair_EndT(String repair_EndT) {
+	public void setRepair_EndT(Date repair_EndT) {
 		Repair_EndT = repair_EndT;
 	}
-	public int getOrder_ID() {
+	public String getOrder_ID() {
 		return Order_ID;
 	}
-	public void setOrder_ID(int order_ID) {
+	public void setOrder_ID(String order_ID) {
 		Order_ID = order_ID;
 	}
-	public int getP_ID() {
+	public String getP_ID() {
 		return P_ID;
 	}
-	public void setP_ID(int p_ID) {
+	public void setP_ID(String p_ID) {
 		P_ID = p_ID;
 	}
 	public String getRepair_State() {
@@ -50,5 +53,8 @@ public class Repair {
 	public void setRepair_State(String repair_State) {
 		Repair_State = repair_State;
 	}
+	
+	
+	
 	
 }

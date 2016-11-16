@@ -24,7 +24,7 @@ public class UserDao implements IUser {
 		try {
 			while(rs.next()){
 				User a=new User();
-				a.setUser_ID(rs.getInt("User_ID"));
+				a.setUser_ID(rs.getString("User_ID"));
 				a.setUser_Name(rs.getString("User_Name"));
 				a.setUser_Pass(rs.getString("User_Pass"));
 				list.add(a);
@@ -39,7 +39,7 @@ public class UserDao implements IUser {
 	}
 
 	@Override
-	public User QueryUserByID(int id) {
+	public User QueryUserByID(String id) {
 		// TODO Auto-generated method stub
 		util.getConnection();
 		sql="select * from UserTable where User_ID=?";
@@ -76,7 +76,7 @@ public class UserDao implements IUser {
 	}
 
 	@Override
-	public void DeleteUser(int id) {
+	public void DeleteUser(String id) {
 		// TODO Auto-generated method stub
 		util.getConnection();
 		sql="delete from UserTable where User_ID=?";

@@ -13,7 +13,7 @@ private RepairDao Rdao=new RepairDao();
 		return Rdao.QueryAllRepair();
 	}
 	
-	public Repair QueryRepair(int id){
+	public Repair QueryRepair(String id){
 		return Rdao.QueryRepairByID(id);
 	}
 	
@@ -21,7 +21,7 @@ private RepairDao Rdao=new RepairDao();
 		Rdao.InsertRepair(a);
 	}
 	
-	public void DeleteRepair(int id){
+	public void DeleteRepair(String id){
 		Rdao.DeleteRepair(id);
 	}
 	

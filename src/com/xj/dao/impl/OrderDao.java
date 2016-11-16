@@ -25,11 +25,11 @@ public class OrderDao implements IOrderDao{
 		try {
 			while(rs.next()){
 				Order a=new Order();
-				a.setOrder_ID(rs.getInt("Order_ID"));
+				a.setOrder_ID(rs.getString("Order_ID"));
 				a.setOrder_Name(rs.getString("Order_Name"));
 				a.setOrder_Describe(rs.getString("order_Describe"));
-				a.setOrder_Time(rs.getString("order_Time"));
-				a.setUser_ID(rs.getInt("User_ID"));
+				a.setOrder_Time(rs.getDate("order_Time"));
+				a.setUser_ID(rs.getString("User_ID"));
 				list.add(a);
 			}
 		} catch (SQLException e) {
@@ -42,7 +42,7 @@ public class OrderDao implements IOrderDao{
 	}
 
 	@Override
-	public Order QueryOrderByID(int id) {
+	public Order QueryOrderByID(String id) {
 		// TODO Auto-generated method stub
 		util.getConnection();
 		sql="select * from OrderTable where Order_ID=?";
@@ -54,8 +54,8 @@ public class OrderDao implements IOrderDao{
 			while(rs.next()){				
 				a.setOrder_Name(rs.getString("Order_Name"));
 				a.setOrder_Describe(rs.getString("order_Describe"));
-				a.setOrder_Time(rs.getString("order_Time"));
-				a.setUser_ID(rs.getInt("user_ID"));
+				a.setOrder_Time(rs.getDate("order_Time"));
+				a.setUser_ID(rs.getString("user_ID"));
 				a.setOrder_ID(id);
 			}
 		} catch (SQLException e) {
@@ -83,7 +83,7 @@ public class OrderDao implements IOrderDao{
 	}
 
 	@Override
-	public void DeleteOrder(int id) {
+	public void DeleteOrder(String id) {
 		// TODO Auto-generated method stub
 		util.getConnection();
 		sql="delete from OrderTable where Order_ID=?";
@@ -97,7 +97,7 @@ public class OrderDao implements IOrderDao{
 	public void UpdateOrder(Order o) {
 		// TODO Auto-generated method stub
 		util.getConnection();
-		sql="update OrderTable set Order_Name=?,Order_Describe,Order_Time,User_ID where Order_ID=?";
+		sql="update OrderTable set Order_Name=?,Order_Describe=?,Order_Time=?,User_ID=? where Order_ID=?";
 		List<Object> params=new ArrayList<Object>();
 		params.add(o.getOrder_Name());
 		params.add(o.getOrder_Describe());

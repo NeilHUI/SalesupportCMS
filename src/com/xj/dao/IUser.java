@@ -7,11 +7,11 @@ import com.xj.vo.User;
 public interface IUser {
 	public List<User> QueryAllUser();
 	
-	public User QueryUserByID(int id);
+	public User QueryUserByID(String id);
 	
 	public void InsertUser(User u);
 	
-	public void DeleteUser(int id);
+	public void DeleteUser(String id);
 	
 	public void UpdateUser(User u);
 }

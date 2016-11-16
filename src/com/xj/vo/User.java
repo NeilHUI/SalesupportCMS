@@ -1,15 +1,15 @@
 package com.xj.vo;
 
 public class User {
-	private int User_ID;
+	private String User_ID;
 	private String User_Name;
 	private String User_Pass;
 
-	public int getUser_ID() {
+	public String getUser_ID() {
 		return User_ID;
 	}
 
-	public void setUser_ID(int user_ID) {
+	public void setUser_ID(String user_ID) {
 		User_ID = user_ID;
 	}
 

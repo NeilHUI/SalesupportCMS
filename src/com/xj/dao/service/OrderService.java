@@ -13,7 +13,7 @@ private OrderDao Odao=new OrderDao();
 		return Odao.QueryAllOrder();
 	}
 	
-	public Order QueryOrder(int id){
+	public Order QueryOrder(String id){
 		return Odao.QueryOrderByID(id);
 	}
 	
@@ -21,7 +21,7 @@ private OrderDao Odao=new OrderDao();
 		Odao.InsertOrder(a);
 	}
 	
-	public void DeleteOrder(int id){
+	public void DeleteOrder(String id){
 		Odao.DeleteOrder(id);
 	}
 	

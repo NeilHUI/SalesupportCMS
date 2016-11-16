@@ -13,7 +13,7 @@ private PersonnelDao Pdao=new PersonnelDao();
 		return Pdao.QueryAllPersonnel();
 	}
 	
-	public Personnel QueryPersonnel(int id){
+	public Personnel QueryPersonnel(String id){
 		return Pdao.QueryPersonnelByID(id);
 	}
 	
@@ -21,7 +21,7 @@ private PersonnelDao Pdao=new PersonnelDao();
 		Pdao.InsertPersonnel(p);
 	}
 	
-	public void DeletePersonnel(int id){
+	public void DeletePersonnel(String id){
 		Pdao.DeletePersonnel(id);
 	}
 	

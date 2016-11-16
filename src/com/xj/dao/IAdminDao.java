@@ -8,11 +8,11 @@ public interface IAdminDao {
 
 	public List<Admin> QueryAllAdmin();
 
-	public Admin QueryAdminByID(int id);
+	public Admin QueryAdminByName(String name);
 
 	public void InsertAdmin(Admin A);
 
-	public void DeleteAdmin(int id);
+	public void DeleteAdmin(String id);
 
 	public void UpdateAdmin(Admin A);
 }

@@ -26,10 +26,11 @@ public class PersonnelDao implements IPersonnel {
 		try {
 			while(rs.next()){
 				Personnel p=new Personnel();
-				p.setP_ID(rs.getInt("p_ID"));
+				p.setP_ID(rs.getString("p_ID"));
 				p.setP_Name(rs.getString("p_Name"));
-				p.setP_Score(rs.getInt("p_Score"));
-				p.setInGroup(rs.getInt("inGroup"));				
+				p.setP_Pass(rs.getString("P_Pass"));
+				p.setP_Score(rs.getDouble("p_Score"));
+				p.setInGroup(rs.getString("inGroup"));				
 				list.add(p);
 			}
 		} catch (SQLException e) {
@@ -42,7 +43,7 @@ public class PersonnelDao implements IPersonnel {
 	}
 
 	@Override
-	public Personnel QueryPersonnelByID(int id) {
+	public Personnel QueryPersonnelByID(String id) {
 		// TODO Auto-generated method stub
 		util.getConnection();
 		sql="select * from Personnel where P_ID=?";
@@ -53,9 +54,10 @@ public class PersonnelDao implements IPersonnel {
 		try {
 			while(rs.next()){								
 				p.setP_Name(rs.getString("p_Name"));
-				p.setP_Score(rs.getInt("p_Score"));
-				p.setInGroup(rs.getInt("inGroup"));	
-				p.setP_ID(rs.getInt("p_ID"));
+				p.setP_Pass(rs.getString("p_Pass"));
+				p.setP_Score(rs.getDouble("p_Score"));
+				p.setInGroup(rs.getString("inGroup"));	
+				p.setP_ID(rs.getString("p_ID"));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -74,6 +76,7 @@ public class PersonnelDao implements IPersonnel {
 		List<Object> params=new ArrayList<Object>();
 		params.add(p.getP_ID());
 		params.add(p.getP_Name());
+		params.add(p.getP_Pass());
 		params.add(p.getP_Score());
 		params.add(p.getInGroup());
 		
@@ -82,7 +85,7 @@ public class PersonnelDao implements IPersonnel {
 	}
 
 	@Override
-	public void DeletePersonnel(int id) {
+	public void DeletePersonnel(String id) {
 		// TODO Auto-generated method stub
 		util.getConnection();
 		sql="delete from Personnel where P_ID=?";
@@ -96,9 +99,10 @@ public class PersonnelDao implements IPersonnel {
 	public void UpdatePersonnel(Personnel p) {
 		// TODO Auto-generated method stub
 		util.getConnection();
-		sql="update Personnel set P_Name=?,P_InGroup=?,P_Score=? where P_ID=?";
+		sql="update Personnel set P_Name=?,P_Pass=?,P_InGroup=?,P_Score=? where P_ID=?";
 		List<Object> params=new ArrayList<Object>();	
 		params.add(p.getP_Name());
+		params.add(p.getP_Pass());
 		params.add(p.getP_Score());
 		params.add(p.getInGroup());
 		params.add(p.getP_ID());

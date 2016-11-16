@@ -12,15 +12,15 @@ public class AdminService {
 		return Adao.QueryAllAdmin();
 	}
 	
-	public Admin QueryAdmin(int id){
-		return Adao.QueryAdminByID(id);
+	public Admin QueryAdmin(String name){
+		return Adao.QueryAdminByName(name);
 	}
 	
 	public void InsertAdmin(Admin a){
 		Adao.InsertAdmin(a);
 	}
 	
-	public void DeleteAdmin(int id){
+	public void DeleteAdmin(String id){
 		Adao.DeleteAdmin(id);
 	}
 	

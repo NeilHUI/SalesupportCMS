@@ -18,19 +18,19 @@ public class RepairDao implements IRepair {
 	public List<Repair> QueryAllRepair() {
 		// TODO Auto-generated method stub
 		util.getConnection();
-		sql="select * from Repair_Table";
+		sql="select * from RepairTable";
 		rs=util.query(sql, null);
 		List<Repair> list=new ArrayList<Repair>();
 		try {
 			while(rs.next()){
 				Repair a=new Repair();
-				a.setRepair_ID(rs.getInt("Repair_ID"));
-				a.setRepair_ISY(rs.getInt("repair_ISY"));
-				a.setRepair_StartT(rs.getString("repair_StartT"));
-				a.setRepair_EndT(rs.getString("repair_EndT"));
-				a.setOrder_ID(rs.getInt("order_ID"));
-				a.setP_ID(rs.getInt("p_ID"));
-				a.setRepair_State(rs.getString("repair_State"));
+				a.setRepair_ID(rs.getString("Repair_ID"));
+				a.setRepair_ISY(rs.getString("Repair_ISY"));
+				a.setRepair_StartT(rs.getDate("Repair_StartT"));
+				a.setRepair_EndT(rs.getDate("Repair_EndT"));
+				a.setOrder_ID(rs.getString("Order_ID"));
+				a.setP_ID(rs.getString("P_ID"));
+				a.setRepair_State(rs.getString("Repair_State"));
 				list.add(a);
 			}
 		} catch (SQLException e) {
@@ -42,7 +42,7 @@ public class RepairDao implements IRepair {
 		return list;
 	}
 	@Override
-	public Repair QueryRepairByID(int id) {
+	public Repair QueryRepairByID(String id) {
 		// TODO Auto-generated method stub
 		util.getConnection();
 		sql="select * from RepairTable where Repair_ID=?";
@@ -51,14 +51,15 @@ public class RepairDao implements IRepair {
 		rs=util.query(sql, params);
 		Repair a=new Repair();
 		try {
-			while(rs.next()){				
-				a.setRepair_ISY(rs.getInt("repair_ISY"));
-				a.setRepair_StartT(rs.getString("repair_StartT"));
-				a.setRepair_EndT(rs.getString("repair_EndT"));
-				a.setOrder_ID(rs.getInt("order_ID"));
-				a.setP_ID(rs.getInt("p_ID"));
-				a.setRepair_State(rs.getString("repair_State"));
+			while(rs.next()){	
 				a.setRepair_ID(id);
+				a.setRepair_ISY(rs.getString("repair_ISY"));
+				a.setRepair_StartT(rs.getDate("repair_StartT"));
+				a.setRepair_EndT(rs.getDate("repair_EndT"));
+				a.setOrder_ID(rs.getString("order_ID"));
+				a.setP_ID(rs.getString("p_ID"));
+				a.setRepair_State(rs.getString("repair_State"));
+				
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -85,7 +86,7 @@ public class RepairDao implements IRepair {
 		util.close();
 	}
 	@Override
-	public void DeleteRepair(int id) {
+	public void DeleteRepair(String id) {
 		// TODO Auto-generated method stub
 		util.getConnection();
 		sql="delete from RepairTable where Repair_ID=?";
