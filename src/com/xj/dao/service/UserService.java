@@ -13,7 +13,7 @@ private UserDao Udao=new UserDao();
 		return Udao.QueryAllUser();
 	}
 	
-	public User QueryUser(String id){
+	public User QueryByID(String id){
 		return Udao.QueryUserByID(id);
 	}
 	
@@ -28,4 +28,7 @@ private UserDao Udao=new UserDao();
 	public void UpdateUser(User a){
 		Udao.UpdateUser(a);
 	}
+	public boolean valuser(User u){
+		return Udao.valuser(u);
+	};
 }

@@ -14,4 +14,6 @@ public interface IUser {
 	public void DeleteUser(String id);
 	
 	public void UpdateUser(User u);
+	
+	public boolean valuser(User u);
 }

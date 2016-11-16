@@ -25,12 +25,17 @@ public class RepairDao implements IRepair {
 			while(rs.next()){
 				Repair a=new Repair();
 				a.setRepair_ID(rs.getString("Repair_ID"));
-				a.setRepair_ISY(rs.getString("Repair_ISY"));
-				a.setRepair_StartT(rs.getDate("Repair_StartT"));
-				a.setRepair_EndT(rs.getDate("Repair_EndT"));
+				a.setRepair_ISY(rs.getInt("Repair_ISY"));
+				a.setRepair_StartT(rs.getTimestamp("Repair_StartT"));
+				a.setRepair_EndT(rs.getTimestamp("Repair_EndT"));
 				a.setOrder_ID(rs.getString("Order_ID"));
 				a.setP_ID(rs.getString("P_ID"));
 				a.setRepair_State(rs.getString("Repair_State"));
+				a.setRepair_Odertime(rs.getTimestamp("Repair_Odertime"));
+				a.setRepair_SN(rs.getString("repair_SN"));
+				a.setRepair_Adress(rs.getString("repair_Adress"));
+				a.setRepair_Des(rs.getString("repair_Des"));
+				a.setRepair_Tel(rs.getString("repair_Tel"));
 				list.add(a);
 			}
 		} catch (SQLException e) {
@@ -53,13 +58,17 @@ public class RepairDao implements IRepair {
 		try {
 			while(rs.next()){	
 				a.setRepair_ID(id);
-				a.setRepair_ISY(rs.getString("repair_ISY"));
-				a.setRepair_StartT(rs.getDate("repair_StartT"));
-				a.setRepair_EndT(rs.getDate("repair_EndT"));
+				a.setRepair_ISY(rs.getInt("repair_ISY"));
+				a.setRepair_StartT(rs.getTimestamp("repair_StartT"));
+				a.setRepair_EndT(rs.getTimestamp("repair_EndT"));
 				a.setOrder_ID(rs.getString("order_ID"));
 				a.setP_ID(rs.getString("p_ID"));
 				a.setRepair_State(rs.getString("repair_State"));
-				
+				a.setRepair_Odertime(rs.getTimestamp("Repair_Odertime"));
+				a.setRepair_SN(rs.getString("repair_SN"));
+				a.setRepair_Adress(rs.getString("repair_Adress"));
+				a.setRepair_Des(rs.getString("repair_Des"));
+				a.setRepair_Tel(rs.getString("repair_Tel"));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -73,7 +82,7 @@ public class RepairDao implements IRepair {
 	public void InsertRepair(Repair r) {
 		// TODO Auto-generated method stub
 		util.getConnection();
-		sql="insert into RepairTable values(?,?,?,?,?,?,?)";
+		sql="insert into RepairTable values(?,?,?,?,?,?,?,?,?,?,?,?)";
 		List<Object> params=new ArrayList<Object>();
 		params.add(r.getRepair_ID());
 		params.add(r.getRepair_ISY());
@@ -82,6 +91,11 @@ public class RepairDao implements IRepair {
 		params.add(r.getOrder_ID());
 		params.add(r.getP_ID());
 		params.add(r.getRepair_State());
+		params.add(r.getRepair_Odertime());
+		params.add(r.getRepair_Tel());
+		params.add(r.getRepair_Adress());
+		params.add(r.getRepair_SN());
+		params.add(r.getRepair_Des());
 		util.update(sql, params);
 		util.close();
 	}
@@ -99,7 +113,7 @@ public class RepairDao implements IRepair {
 	public void UpdateRepair(Repair r) {
 		// TODO Auto-generated method stub
 		util.getConnection();
-		sql="update RepairTable set Repair_ISY=?,Repair_StartT=?,Repair_EndT=?,Order_ID=?,P_Id=?,Repair_State=? where Repair_ID=?";
+		sql="update RepairTable set Repair_ISY=?,Repair_StartT=?,Repair_EndT=?,Order_ID=?,P_Id=?,Repair_State=?,Repair_Odertime=?,Repair_Tel=?,Repair_Adress=?,Repair_SN=?,Repair_Des where Repair_ID=?";
 		List<Object> params=new ArrayList<Object>();
 		
 		params.add(r.getRepair_ISY());
@@ -108,6 +122,12 @@ public class RepairDao implements IRepair {
 		params.add(r.getOrder_ID());
 		params.add(r.getP_ID());
 		params.add(r.getRepair_State());
+		params.add(r.getRepair_Odertime());
+		params.add(r.getRepair_Tel());
+		params.add(r.getRepair_Adress());
+		params.add(r.getRepair_SN());
+		params.add(r.getRepair_Des());
+		
 		params.add(r.getRepair_ID());
 		util.update(sql, params);
 		util.close();

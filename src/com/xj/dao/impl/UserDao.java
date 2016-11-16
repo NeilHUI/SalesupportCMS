@@ -99,4 +99,29 @@ public class UserDao implements IUser {
 		util.close();
 	}
 
+	@Override
+	public boolean valuser(User u) {
+		util.getConnection();
+		sql = "select User_ID from UserTable where User_Name=? and User_Pass=?";
+		List<Object> params = new ArrayList<Object>();
+		params.add(u.getUser_Name());
+		params.add(u.getUser_Pass());
+		rs = util.query(sql, params);
+		try {
+			
+			if(rs.next()){
+				return true;
+			}
+			else{
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			util.close();
+		}
+		return false;
+	}
+
 }
