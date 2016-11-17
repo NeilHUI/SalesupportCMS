@@ -12,7 +12,7 @@ public class StudentAction {
 	private List<Student> list = new ArrayList<Student>();
 	private Student s = new Student();
 	
-	//查询全部
+	//查询全部 
 	public String queryAll() throws Exception {
 		
 		list = stuService.queryAllStu();
