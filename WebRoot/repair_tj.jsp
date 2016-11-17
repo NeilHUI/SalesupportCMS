@@ -232,32 +232,34 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <hr class="divider_1">
 <br/>
 <!-- 通用位置 -->
-<form action="repair!add.action" method="post">
+<form action="repair!add.action?r_ID=<s:property value='#session.sess_user'/>" method="post">
+
+
 <div  id="ratio_pos">
   <div class="input-group input-group-lg input_text">
-    <span class="input-group-addon span_1" name="r.Order_ID">联系人</span>
-    <input type="text" class="form-control" placeholder="Username">
+    <span class="input-group-addon span_1" >联系人</span>
+    <input type="text" class="form-control" name="r.Order_ID" placeholder="Username">
   </div>
 
   <br/>
   <div class="input-group input-group-lg input_text">
-  <span class="input-group-addon span_1" name="r.Repair_Adress">地址</span>
-    <input type="text" class="form-control" placeholder="**省**市**区**路**号">
+  <span class="input-group-addon span_1" >地址</span>
+    <input type="text" class="form-control" name="r.Repair_Adress" placeholder="**省**市**区**路**号">
   </div>
   <br/>
   <div class="input-group input-group-lg input_text">
-  <span class="input-group-addon span_1" name="r.Repair_Tel">联系方式</span>
-    <input type="text" class="form-control" placeholder="手机号/电话号">
+  <span class="input-group-addon span_1" >联系方式</span>
+    <input type="text" class="form-control" name="r.Repair_Tel" placeholder="手机号/电话号">
   </div>
   <br/>
   <div class="input-group input-group-lg input_text">
-  <span class="input-group-addon span_1" name="r.Repair_SN">设备编号</span>
-    <input type="text" class="form-control" placeholder="12位设备SN码">
+  <span class="input-group-addon span_1" >设备编号</span>
+    <input type="text" class="form-control" name="r.Repair_SN" placeholder="12位设备SN码">
   </div>
   <br/>
   <div class="input-group input-group-lg input_text">
-  <span class="input-group-addon span_1" name="r.Repair_Dec">故障描述</span>
-    <input type="text" class="form-control" placeholder="描述尽可能详细">
+  <span class="input-group-addon span_1" >故障描述</span>
+    <input type="text" class="form-control" name="r.Repair_Des" placeholder="描述尽可能详细">
   </div>
   <br>
  <button type="submit" class="btn btn-primary submit_user">确定提交</button>

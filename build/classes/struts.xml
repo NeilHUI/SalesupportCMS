@@ -7,6 +7,7 @@
 			<result name="login_fail">login_fail.jsp</result>
 		</action>
 		
+		
 	</package>
 	<package name="admin" namespace="/Admin" extends="default">
 		
@@ -22,6 +23,6 @@
 			<result name="listTable">repair_table.jsp</result>
 
 		</action>
-	</package>
+	</package> 
 
 </struts>    

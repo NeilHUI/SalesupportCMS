@@ -14,12 +14,14 @@ public class UserAction {
 	private User u = new User();
 	
 	
+	
 	//验证登录
 		public String login(){
 			if(userSer.valuser(u)){
 				//在session中保存登录成功的用户名
 				Map<String,Object> session = ActionContext.getContext().getSession();
 				session.put("sess_user", u.getUser_Name());
+				
 				
 				
 				return "login_success";
@@ -31,6 +33,7 @@ public class UserAction {
 	public String logout(){
 		Map session = ActionContext.getContext().getSession();
 		session.remove("sess_user");
+		session.remove("sess_userID");
 		return "login_success";
 	}
 	public UserService getUserSer() {
