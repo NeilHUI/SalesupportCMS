@@ -241,26 +241,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <br/>
 <!-- 通用位置 -->
 <div  id="ratio_pos">
+<form action="user!add.action? method="post">
   <div class="input-group input-group-lg input_text">
     <span class="input-group-addon span_1">姓名</span>
-    <input type="text" class="form-control" placeholder="Username">
+    <input type="text" class="form-control" name="u.User_Name" placeholder="Username">
   </div>
 
   <br/>
   <br/>
   <div class="input-group input-group-lg input_text">
   <span class="input-group-addon span_1">密码</span>
-    <input type="password" class="form-control" placeholder="**省**市**区**路**号">
+    <input type="password" class="form-control" name="u.User_Pass" placeholder="Password">
   </div>
   <br/>
   <br/>
   <div class="input-group input-group-lg input_text">
   <span class="input-group-addon span_1">确认密码</span>
-    <input type="password" class="form-control" placeholder="手机号/电话号">
+    <input type="password" class="form-control" placeholder="Password">
   </div>
   <br/>
  <button type="submit" class="btn btn-primary submit_user">注册</button>
-
+</form>
 </div>
 
 

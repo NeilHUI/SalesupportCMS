@@ -3,6 +3,7 @@ package com.xj.action;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.xj.dao.service.UserService;
@@ -14,7 +15,11 @@ public class UserAction {
 	private User u = new User();
 	
 	
-	
+	public String add(){
+		u.setUser_ID(UUID.randomUUID().toString());
+		userSer.InsertUser(u);
+		return "register_success";
+	}
 	//ÑéÖ¤µÇÂ¼
 		public String login(){
 			if(userSer.valuser(u)){

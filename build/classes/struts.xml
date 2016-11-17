@@ -4,7 +4,9 @@
 	<package name="default" namespace="/" extends="struts-default">
 		<action name="user" class="com.xj.action.UserAction">
 		    <result name="login_success">index.jsp</result>
-			<result name="login_fail">login_fail.jsp</result>
+			<result name="login_false">404_page.jsp</result>
+			<result name="register_success">index.jsp</result>
+			
 		</action>
 		
 		
@@ -22,6 +24,7 @@
 		<action name="repair" class="com.xj.action.RepairActivity">
 			<result name="listTable">repair_table.jsp</result>
             <result name="querry_success">management_detail.jsp</result>
+            <result name="del_success">userManagement.jsp</result>
 		</action>
 	</package> 
 
