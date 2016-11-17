@@ -132,4 +132,38 @@ public class RepairDao implements IRepair {
 		util.update(sql, params);
 		util.close();
 	}
+
+	@Override
+	public List<Repair> QueryByUser(String u) {
+		util.getConnection();
+		sql="select * from RepairTable where Order_ID like ?";
+		List<Object> params=new ArrayList<Object>();
+		params.add(u+"@%");
+		rs=util.query(sql, params);
+		List<Repair> list=new ArrayList<Repair>();
+		try {
+			while(rs.next()){
+				Repair a=new Repair();
+				a.setRepair_ID(rs.getString("Repair_ID"));
+				a.setRepair_ISY(rs.getInt("Repair_ISY"));
+				a.setRepair_StartT(rs.getTimestamp("Repair_StartT"));
+				a.setRepair_EndT(rs.getTimestamp("Repair_EndT"));
+				a.setOrder_ID(rs.getString("Order_ID"));
+				a.setP_ID(rs.getString("P_ID"));
+				a.setRepair_State(rs.getString("Repair_State"));
+				a.setRepair_Odertime(rs.getTimestamp("Repair_Odertime"));
+				a.setRepair_SN(rs.getString("repair_SN"));
+				a.setRepair_Adress(rs.getString("repair_Adress"));
+				a.setRepair_Des(rs.getString("repair_Des"));
+				a.setRepair_Tel(rs.getString("repair_Tel"));
+				list.add(a);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			util.close();
+		}
+		return list;
+	}
 }

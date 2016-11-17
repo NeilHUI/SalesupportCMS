@@ -219,32 +219,35 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div class="container" id="summary-container">
 
   
-<div class="div_font"><span style="font-size: 30px">订单查询</span> Order Query</div> 
+<div class="div_font"><span style="font-size: 30px">维修单查询</span> Order Query</div> 
 <hr class="divider_1">
 <br/>
 <div  id="ratio_pos">
 
 <hr class="divider_1">
-<table class="table table-hover ">
+<table class="table table-hover " style="color:#2a6496; font-size: 12px;">
   <tr>
       <td>编号</td>
       <td>提交时间</td>
+      <td>产品S/N码</td>
       <td>问题描述</td>
-      <td>查看</td>
+      <td>操作</td>
   </tr>
   <tbody>
- <tr>
-      <td>编号</td>
-      <td>提交时间</td>
-      <td>问题描述</td>
-      <td>查看</td>
-  </tr>
-    <tr>
-      <td>编号</td>
-      <td>提交时间</td>
-      <td>问题描述</td>
-      <td>查看</td>
-  </tr>
+ 
+  <s:iterator value="list" id = "li" status="status">
+    <a href="123"><tr>
+      <td><s:property value="%{#status.index+1}"/></td>
+       <td><s:date name='#li.Repair_StartT' format="yyyy-MM-dd HH:mm:ss"/> </td> 
+      <td><s:property value="Repair_SN" /></td>
+      <td><s:property value="Repair_Des" /></td>
+      <td><a href="repair!queryDetail.action?r_ID=<s:property value='Repair_ID'/>">查看</a></td>
+    </tr>
+    </a>
+  </s:iterator>
+	
+ 
+
   </tbody>
    
 </table>

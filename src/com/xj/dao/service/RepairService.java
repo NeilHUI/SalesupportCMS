@@ -28,4 +28,7 @@ private RepairDao Rdao=new RepairDao();
 	public void UpdateRepair(Repair a){
 		Rdao.UpdateRepair(a);
 	}
+	public List<Repair> querryByUser(String u){
+		return Rdao.QueryByUser(u);
+	}
 }

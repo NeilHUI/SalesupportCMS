@@ -21,10 +21,13 @@ public class RepairActivity {
 		this.r_ID = r_ID;
 	}
 	//查询全部 
-	public String queryAll() throws Exception {
-		
-		list = repSer.QueryAllRepair();
-		
+	public String queryDetail() throws Exception {
+		r = repSer.QueryRepair(r_ID);
+		return "querry_success";
+	}
+	//查询用户下的维修单
+	public String queryById() throws Exception{
+		list = repSer.querryByUser(r_ID);
 		return "listTable";
 	}
 	public String add() throws Exception {
@@ -36,7 +39,7 @@ public class RepairActivity {
 
 		r.setOrder_ID(r_ID+"@"+r.getOrder_ID());
 		repSer.InsertRepair(r);
-		return queryAll();
+		return queryById();
 	}
 	
 

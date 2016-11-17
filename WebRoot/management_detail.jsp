@@ -238,18 +238,32 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div  id="ratio_pos">
 <br/>
 <p><span style="font-size: 20px">维修进度</span></p> 
-
 <div class="progress">
-  <div class="progress-bar progress-bar-success" style="width: 33%">
+<div class="progress-bar progress-bar-success" style="width: 33%">
     <span class="">审核中</span>
   </div>
-  <!-- <div class="progress-bar progress-bar-warning progress-bar-striped" style="width: 33%">
+<s:if test="r.repair_State == 4">
+   <div class="progress-bar progress-bar-danger" style="width: 67%">
+    <span class="">未审核通过，请检查SN码，重新提交订单！</span>
+  </div> 
+  </s:if>
+  <s:elseif test="r.repair_State != 1 && r.repair_State != 3" >
+  <div class="progress-bar progress-bar-warning progress-bar-striped" style="width: 33%">
+    <span class="">维修中</span>
+  </div>
+  </s:elseif>
+  <s:elseif test="r.repair_State == 3">
+  <div class="progress-bar progress-bar-warning progress-bar-striped" style="width: 33%">
     <span class="">维修中</span>
   </div>
   <div class="progress-bar progress-bar-danger" style="width: 34%">
     <span class="">维修完成</span>
-  </div> -->
+  </div> 
+  </s:elseif>
+
 </div>
+<p><span style="font-size: 20px">维修进度</span></p> 
+<br/>
 <br/>
 <p><span style="font-size: 20px">服务评价</span></p> 
 

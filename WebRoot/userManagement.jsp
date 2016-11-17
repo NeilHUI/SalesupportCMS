@@ -247,7 +247,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            
         </div>
          <div class="col-xs-6 col-sm-3">
-            <a href="repair_table.jsp">
+            <a href="repair!queryById.action?r_ID=<s:property value='#session.sess_user'/>"">
                <img class="img-circle" src="images/dingdan.png" alt="chrome">
 
                <h5>维修单查询</h5>

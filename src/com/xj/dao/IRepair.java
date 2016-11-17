@@ -15,4 +15,6 @@ public interface IRepair {
 	public void DeleteRepair(String id);
 
 	public void UpdateRepair(Repair r);
+	
+	public List<Repair> QueryByUser(String u);
 }

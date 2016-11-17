@@ -21,7 +21,7 @@
 		
 		<action name="repair" class="com.xj.action.RepairActivity">
 			<result name="listTable">repair_table.jsp</result>
-
+            <result name="querry_success">management_detail.jsp</result>
 		</action>
 	</package> 
 

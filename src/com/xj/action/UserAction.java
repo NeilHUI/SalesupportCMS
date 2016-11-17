@@ -22,8 +22,6 @@ public class UserAction {
 				Map<String,Object> session = ActionContext.getContext().getSession();
 				session.put("sess_user", u.getUser_Name());
 				
-				
-				
 				return "login_success";
 			}else{
 				return "login_false";
