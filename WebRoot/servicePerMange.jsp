@@ -180,13 +180,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#"><p style="color: #4a6a93;"> <b>S</b>aleSupport</p></a>
+      <a class="navbar-brand" href="servicePer.jsp"><p style="color: #4a6a93;"> <b>S</b>aleSupport</p></a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="demo-navbar">
       <ul class="nav navbar-nav">
-        <li ><a href="">维护人员管理系统</a></li>
+        <li ><a href="servicePer.jsp">维护人员管理系统</a></li>
         <li ><a href="training.jsp">培训课堂</a></li>
 <!--         <li class="active"><a href="userManagement.jsp">维修管理</a></li>
         <li><a href="http://www.jingdong.com">官方店铺</a></li> -->
@@ -263,12 +263,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <td><s:property value="Repair_Tel" />(<s:property value="Order_ID" />)</td>
       <td><s:property value="Repair_SN" /></td>
       <td><s:property value="Repair_Des" /></td>
-<s:if test="r.repair_State == 3">
-    <td><a  href="service!wancheng.action?mian_ID=<s:property value='Repari_ID'/>" class="btn btn-success btn-xs" disabled="disabled" >完成</a></td>
+<s:if test="repair_State == 3">
+    <td><a  href="service!wancheng.action?main_ID=<s:property value='Repair_ID'/>&id=<s:property value='#session.sess_id'/>" class="btn btn-success btn-xs" disabled="disabled" >完成</a></td>
   </s:if>
   <s:else>
+   <td><a  href="service!wancheng.action?main_ID=<s:property value='Repair_ID'/>&id=<s:property value='#session.sess_id'/>" class="btn btn-success btn-xs" >完成</a></td>  
   </s:else>
-        <td><a  href="service!wancheng.action?mian_ID=<s:property value='Repari_ID'/>" class="btn btn-success btn-xs" >完成</a></td>   
+        
     </tr>
 
   </s:iterator>
