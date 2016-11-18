@@ -203,7 +203,7 @@ public class RepairDao implements IRepair {
 	}
 	public List<Repair> querryAllU(String u) {
 		util.getConnection();
-		sql="select * from RepairTable join Personnel on Personnel.P_ID=RepairTable.P_ID where Personnel.P_ID = ? ";
+		sql="select * from RepairTable join FeedBack on FeedBack.FB_ID=RepairTable.P_ID where FeedBack.P_ID = ? ";
 		List<Object> params=new ArrayList<Object>();
 		params.add(u);
 		rs=util.query(sql, params);
@@ -240,6 +240,7 @@ public class RepairDao implements IRepair {
 	public boolean updateOne(Object a, Object b, String c) {
 		util.getConnection();
 		sql="update RepairTable set "+a+"=?  where Repair_ID=?";
+
 		List<Object> params=new ArrayList<Object>();
 		params.add(b);
 		params.add(c);

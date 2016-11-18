@@ -111,17 +111,18 @@ public class SerPerAction {
 		repSer.updateOne("Repair_OderTime",d, main_ID);
 		repSer.updateOne("Repair_State",2, main_ID);
 
-
+		list1 = repSer.querryAllNo();
 		return "qd_success";
 	}
 	//Íê³É¶©µ¥
-		public String wancheng(){
+	public String wancheng(){
 			Timestamp d = new Timestamp(System.currentTimeMillis());
 			
 			repSer.updateOne("Repair_EndT",d, main_ID);
 			repSer.updateOne("Repair_State",3, main_ID);
-			return "wancheng_success";
-		}
+			list1 = repSer.querryAllU(id);
+			return "serlist";
+	}
 	public String querryAllNo() throws Exception{
 		list1 = repSer.querryAllNo();
 		return "serlistTable";

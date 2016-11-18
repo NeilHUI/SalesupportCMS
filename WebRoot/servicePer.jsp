@@ -190,7 +190,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="demo-navbar">
       <ul class="nav navbar-nav">
-        <li ><a  data-toggle="modal" data-target="#about">维护人员管理平台</a></li>
+        <li ><a href="servicePer.jsp">维护人员管理系统</a></li>
         <li ><a href="training.jsp">培训课堂</a></li>
 <!--         <li class="active"><a href="userManagement.jsp">维修管理</a></li>
         <li><a href="http://www.jingdong.com">官方店铺</a></li> -->
@@ -259,7 +259,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <span class="input-group-btn">
         <button disabled="disabled" class="btn btn-default" type="button">申请商品名称：</button>
       </span>
-      <input type="text" class="form-control" style="width: 250px;" name="sqpi.num" />
+      <input type="text" class="form-control" style="width: 250px;" name="sqpi.part_id" />
       <span class="input-group-btn">
         <button class="btn btn-default" type="submit" >快速申请</button>
       </span>
@@ -288,7 +288,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <tbody>
  
   <s:iterator value="list1" id = "li" status="status">
-    <a href="123"><tr>
+   <tr>
 
       <td><s:property value="%{#status.index+1}"/></td>
       <td><s:property value="Repair_Adress" /></td>
@@ -297,7 +297,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
       <td><a  href="service!qiangdan.action?r_ID=<s:property value='P_ID'/>&id=<s:property value='#session.sess_id'/>&main_ID=<s:property value='Repair_ID'/>" class="btn btn-success btn-xs" >抢单</a></td>
     </tr>
-    </a>
+
   </s:iterator>
 <!--   <s:if test="null!=#Repair_Odertime"></s:if> -->
 <!-- <p class="bg-primary len_detail">联系人：<s:property value="r.Order_ID"></s:property></p>
