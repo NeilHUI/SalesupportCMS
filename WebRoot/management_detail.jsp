@@ -112,6 +112,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       .submit_user{
         width: 450px;
       }
+      .len_detail{
+        width: 500px;
+      }
     #code  
           {  
              background:#ffffff;
@@ -215,7 +218,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <button type="submit" class="btn btn-default">Submit</button>
       </form> -->
       <ul class="nav navbar-nav navbar-right">
-         <li><p class="navbar-text"><s:if test="null==#session.sess_user"><a href="#" data-toggle="modal" data-target="#login">登录</a>&nbsp;|&nbsp;<a href="register.jsp" class="navbar-link">免费注册</a></s:if><s:else>欢迎：<a href="admin!list_user.action" class="navbar-link"><s:property value="#session.sess_user"/></a>&nbsp;|&nbsp;<a href="admin!logout.action" class="navbar-link">退出</a></s:else></p></li>
+         <li><p class="navbar-text"><s:if test="null==#session.sess_user"><a href="#" data-toggle="modal" data-target="#login">登录</a>&nbsp;|&nbsp;<a href="register.jsp" class="navbar-link">免费注册</a></s:if><s:else>欢迎：<a href="userManagement.jsp" class="navbar-link"><s:property value="#session.sess_user"/></a>&nbsp;|&nbsp;<a href="admin!logout.action" class="navbar-link">退出</a></s:else></p></li>
 
         
        
@@ -262,20 +265,35 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </s:elseif>
 
 </div>
-<p><span style="font-size: 20px">维修进度</span></p> 
+<p><span style="font-size: 20px">维修单详情</span></p> 
+<p class="bg-primary len_detail">联系人：<s:property value="r.Order_ID"></s:property></p>
+<p class="bg-success len_detail">地址：<s:property value="r.Repair_Adress"></s:property></p>
+<p class="bg-info len_detail">联系电话：<s:property value="r.Repair_Tel"></s:property></p>
+<p class="bg-warning len_detail">产品编号：<s:property value="r.Repair_SN"></s:property></p>
+<p class="bg-danger len_detail">故障描述：<s:property value="r.Repair_Des"></s:property></p>
 <br/>
-<br/>
-<p><span style="font-size: 20px">服务评价</span></p> 
 
+<s:if test="r.repair_State == 3">
+   <p><span style="font-size: 20px">服务评价</span></p> 
+        <form action="repair!addFeeBack.action?r_ID=<s:property value='r.Repair_ID'/>" method="post">
+      <s:hidden name="fb.P_ID"></s:hidden>
+        <s:hidden name="r.P_ID"></s:hidden>
+        <input id="input-21f" value="${fb.FB_Score}" name="fb.FB_Score" type="number" class="rating" min=0 max=5 step=1 data-size="sm" >
+     <br>
 
-
-<form>
-    <input id="input-21f" value="0" type="number" class="rating" min=0 max=5 step=1 data-size="sm" >
-    <br>
-    评价：<textarea class="form-control" style="width: 500px" rows="3"></textarea>
-    <br/>
-    <button type="submit" class="btn btn-default">提交</button>
+        评价:<br/>
+       <s:textarea name="fb.FB_Comment" style="width: 500px" rows="3"></s:textarea>
+        <br/>
+    
+    <button type="submit" class="btn btn-info" style="width: 100px;">提交</button>
 </form>
+  </s:if>
+<s:else>
+ <form action="repair!delFeeBack.action?r_ID=<s:property value='r.Repair_ID'/>" method="post">
+  <button type="submit"  class="btn btn-info" style="width: 100px;">删除维修单</button>
+  </form>
+</s:else>
+
 <br/>
 
 

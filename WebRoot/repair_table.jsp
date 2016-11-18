@@ -203,7 +203,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <button type="submit" class="btn btn-default">Submit</button>
       </form> -->
       <ul class="nav navbar-nav navbar-right">
-         <li><p class="navbar-text"><s:if test="null==#session.sess_user"><a href="#" data-toggle="modal" data-target="#login">登录</a>&nbsp;|&nbsp;<a href="register.jsp" class="navbar-link">免费注册</a></s:if><s:else>欢迎：<a href="admin!list_user.action" class="navbar-link"><s:property value="#session.sess_user"/></a>&nbsp;|&nbsp;<a href="admin!logout.action" class="navbar-link">退出</a></s:else></p></li>
+         <li><p class="navbar-text"><s:if test="null==#session.sess_user"><a href="#" data-toggle="modal" data-target="#login">登录</a>&nbsp;|&nbsp;<a href="register.jsp" class="navbar-link">免费注册</a></s:if><s:else>欢迎：<a href="userManagement.jsp" class="navbar-link"><s:property value="#session.sess_user"/></a>&nbsp;|&nbsp;<a href="admin!logout.action" class="navbar-link">退出</a></s:else></p></li>
 
         
        

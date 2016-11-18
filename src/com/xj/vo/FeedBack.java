@@ -10,8 +10,8 @@ public class FeedBack {
 	public String getP_ID() {
 		return P_ID;
 	}
-	public void setP_ID(String p_ID) {
-		P_ID = p_ID;
+	public void setP_ID(String P_ID) {
+		this.P_ID = P_ID;
 	}
 	public String getOrder_ID() {
 		return Order_ID;
@@ -22,8 +22,8 @@ public class FeedBack {
 	public double getFB_Score() {
 		return FB_Score;
 	}
-	public void setFB_Score(double fB_Score) {
-		FB_Score = fB_Score;
+	public void setFB_Score(double FB_Score) {
+		this.FB_Score = FB_Score;
 	}
 	public String getFB_Comment() {
 		return FB_Comment;
