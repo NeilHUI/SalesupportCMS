@@ -37,4 +37,9 @@ private RepairDao Rdao=new RepairDao();
 	public List<Repair> querryAllU(String u){
 		return Rdao.querryAllU(u);
 	}
+	public boolean updateOne(Object a ,Object b ,String id){
+		return Rdao.updateOne(a, b,id);
+		
+	}
+	
 }

@@ -147,6 +147,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
        }  
 //校验验证码  
+        function kssq(){
+          alert("申请成功！");
+          return true;
+        }
         function validate(){  
 
             var inputCode = document.getElementById("val_inp").value.toUpperCase(); //取得输入的验证码并转化为大写        
@@ -212,7 +216,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <button type="submit" class="btn btn-default">Submit</button>
       </form> -->
       <ul class="nav navbar-nav navbar-right">
-         <li><p class="navbar-text"><s:if test="null==#session.sess_Ser"><a href="#" data-toggle="modal" data-target="#login">快速登录</a></s:if><s:else>欢迎：<a href="userManagement.jsp" class="navbar-link"><s:property value="#session.sess_Ser"/></a>&nbsp;|&nbsp;<a href="service!logout.action" class="navbar-link">退出</a></s:else></p></li>
+         <li><p class="navbar-text"><s:if test="null==#session.sess_Ser"><a href="#" data-toggle="modal" data-target="#login">快速登录</a></s:if><s:else>欢迎：<a href="service!querryAllU.action?id=<s:property value='#session.sess_id'/>" class="navbar-link"><s:property value="#session.sess_Ser"/></a>&nbsp;|&nbsp;<a href="service!logout.action" class="navbar-link">退出</a></s:else></p></li>
 
         
        
@@ -239,7 +243,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 
 <p class="bg-primary len_detail">快速物品申请</p>
-<form action="ShenQing!add.action" method="post">
+<form action="Admin/ShenQing!add.action" method="post" onSubmit="return kssq();">
 <input type="hidden" name="sq.manId" value="<s:property value='#session.sess_Ser'/>" />
 <input type="hidden" name="sqpi.num" value="<s:property value='1'/>" />
 <div style="width: 900px;">
@@ -248,7 +252,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <span class="input-group-btn">
         <button disabled="disabled" class="btn btn-default" type="button">维修产品S/N码：</button>
       </span>
-      <input type="text" class="form-control" style="width: 250px;" name="sq.addr" />
+      <input type="text"  class="form-control" style="width: 250px;" name="sq.addr" />
     </div><!-- /input-group -->
   </div>
  <div class="input-group" style="width: 340px; padding-left: 10px;">
@@ -257,7 +261,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       </span>
       <input type="text" class="form-control" style="width: 250px;" name="sqpi.num" />
       <span class="input-group-btn">
-        <button class="btn btn-default" type="submit">快速申请</button>
+        <button class="btn btn-default" type="submit" >快速申请</button>
       </span>
     </div><!-- /input-group -->
 </form>
@@ -269,7 +273,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <br/>
 <p class="bg-success len_detail">最新维修订单<s:if test="null==#session.sess_Ser">（请先登录）</s:if></p>
 
-<form action="!add.action?r_ID=<s:property value='#session.sess_Ser'/>" method="post">
 
 
 
@@ -286,15 +289,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  
   <s:iterator value="list1" id = "li" status="status">
     <a href="123"><tr>
+
       <td><s:property value="%{#status.index+1}"/></td>
       <td><s:property value="Repair_Adress" /></td>
       <td><s:property value="Repair_SN" /></td>
       <td><s:property value="Repair_Des" /></td>
 
-      <td><button type="button" href="repair!queryDetail.action?r_ID=<s:property value='Repair_ID'/>" class="btn btn-success btn-xs" disabled="disabled">抢单</button></td>
+      <td><a  href="service!qiangdan.action?r_ID=<s:property value='P_ID'/>&id=<s:property value='#session.sess_id'/>&main_ID=<s:property value='Repair_ID'/>" class="btn btn-success btn-xs" >抢单</a></td>
     </tr>
     </a>
   </s:iterator>
+<!--   <s:if test="null!=#Repair_Odertime"></s:if> -->
 <!-- <p class="bg-primary len_detail">联系人：<s:property value="r.Order_ID"></s:property></p>
 <p class="bg-success len_detail">地址：<s:property value="r.Repair_Adress"></s:property></p>
 <p class="bg-info len_detail">联系电话：<s:property value="r.Repair_Tel"></s:property></p>
@@ -307,7 +312,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    
 </table>
 
-</form>
 
 <hr class="divider">
 <footer>

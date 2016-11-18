@@ -31,6 +31,8 @@
 			<result name="ShenQing_part_all">ShenQing_part_all.jsp</result>
 			<result name="ShenQing_query_byManId">ShenQing_query_byManId.jsp</result>
 			<result name="ShenQing_query">ShenQing_query.jsp</result>
+			<result name="ShenQing_add_res_0">../tz.jsp</result>
+			
 		</action>
 		
 		
@@ -49,6 +51,10 @@
 		    <result name="login_success">servicePer.jsp</result>
 			<result name="serlistTable">servicePer.jsp</result>
 			<result name="login_false">404_page.jsp</result>
+			<result name="qd_success">servicePer.jsp</result>
+			<result name="wancheng_success">servicePer.jsp</result>
+			<result name="serlist">servicePerMange.jsp</result>
+			
          
 		</action>
 	</package> 

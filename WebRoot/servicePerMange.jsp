@@ -186,7 +186,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="demo-navbar">
       <ul class="nav navbar-nav">
-        <li ><a href="#" data-toggle="modal" data-target="#about" >维护人员管理系统</a></li>
+        <li ><a href="">维护人员管理系统</a></li>
         <li ><a href="training.jsp">培训课堂</a></li>
 <!--         <li class="active"><a href="userManagement.jsp">维修管理</a></li>
         <li><a href="http://www.jingdong.com">官方店铺</a></li> -->
@@ -250,23 +250,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <td>编号</td>
       <td>维修地址</td>
       <td>联系方式</td>
-      <td>问题描述</td>
       <td>S/N</td>
+      <td>问题描述</td>
       <td>操作</td>
   </tr>
   <tbody>
  
-  <s:iterator value="list2" id = "li" status="status">
-    <a href="123"><tr>
+  <s:iterator value="list1" id = "li" status="status">
+    <tr>
       <td><s:property value="%{#status.index+1}"/></td>
       <td><s:property value="Repair_Adress" /></td>
       <td><s:property value="Repair_Tel" />(<s:property value="Order_ID" />)</td>
       <td><s:property value="Repair_SN" /></td>
       <td><s:property value="Repair_Des" /></td>
-
-      <td><button type="button" href="repair!queryDetail.action?r_ID=<s:property value='Repair_ID'/>" class="btn btn-success btn-xs" >完成</button></td>
+<s:if test="r.repair_State == 3">
+    <td><a  href="service!wancheng.action?mian_ID=<s:property value='Repari_ID'/>" class="btn btn-success btn-xs" disabled="disabled" >完成</a></td>
+  </s:if>
+  <s:else>
+  </s:else>
+        <td><a  href="service!wancheng.action?mian_ID=<s:property value='Repari_ID'/>" class="btn btn-success btn-xs" >完成</a></td>   
     </tr>
-    </a>
+
   </s:iterator>
 <!-- <p class="bg-primary len_detail">联系人：<s:property value="r.Order_ID"></s:property></p>
 <p class="bg-success len_detail">地址：<s:property value="r.Repair_Adress"></s:property></p>

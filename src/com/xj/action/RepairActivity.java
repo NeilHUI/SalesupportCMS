@@ -33,9 +33,11 @@ public class RepairActivity {
 	public String add() throws Exception {
 		Timestamp d = new Timestamp(System.currentTimeMillis()); 
 		r.setRepair_ID(UUID.randomUUID().toString());
+		r.setP_ID(UUID.randomUUID().toString());
 		r.setRepair_StartT(d);
 		r.setRepair_ISY(0);
 		r.setRepair_State("1");
+
 
 		r.setOrder_ID(r_ID+"@"+r.getOrder_ID());
 		repSer.InsertRepair(r);
