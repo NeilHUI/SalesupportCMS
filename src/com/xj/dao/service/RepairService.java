@@ -31,4 +31,10 @@ private RepairDao Rdao=new RepairDao();
 	public List<Repair> querryByUser(String u){
 		return Rdao.QueryByUser(u);
 	}
+	public List<Repair> querryAllNo(){
+		return Rdao.querryAllNo();
+	}
+	public List<Repair> querryAllU(String u){
+		return Rdao.querryAllU(u);
+	}
 }
