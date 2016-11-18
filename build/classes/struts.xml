@@ -8,6 +8,21 @@
 			<result name="register_success">index.jsp</result>
 			
 		</action>
+		<action name="train_resource" class="com.xj.action.TrainResourceAction" method="upload">
+				    
+			<result name="listRes">/train/listRes.jsp</result>
+			<result name="failure">/train/failure.jsp</result>
+			<result name="down" type="stream">
+				<param name="contentType">application/x-msdownload</param>
+				<param name="contentDisposition">attachment;fileName=${downName}</param>
+				<param name="inputName">downFile</param>
+			</result>
+		</action>
+		<action name="resPage" class="com.xj.action.ResPageAction">
+			<result name="listVideoRes">/train/listVideoRes.jsp</result>
+			<result name="listDocRes">/train/listDocRes.jsp</result>
+			<result name="failure">/train/res_failure.jsp</result>
+		</action>
 		
 		
 	</package>
