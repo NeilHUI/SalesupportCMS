@@ -4,9 +4,20 @@
 	<package name="default" namespace="/Admin" extends="struts-default">
 		
 		<action name="admin" class="com.xj.action.AdminAction">
-			<result name="index">index.jsp</result>
+			<result name="index">dashboard.jsp</result>
 			<result name="error">login.jsp</result>
 			<result name="listRepair">index.jsp</result>
+		</action>
+		<action name="system" class="com.xj.action.SystemAction">
+			<result name="findall">systemPlan.jsp</result>
+		</action>
+		<action name="monitor" class="com.xj.action.MonitorAction">
+			<result name="getall">proControl.jsp</result>
+		</action>
+		<action name="personnel" class="com.xj.action.PersonAction">
+			
+			<result name="ok">seePerson.jsp</result>
+			<result name="updateok">updatePerson.jsp</result>
 		</action>
 	</package>
 	

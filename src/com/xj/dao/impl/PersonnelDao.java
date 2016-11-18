@@ -30,7 +30,7 @@ public class PersonnelDao implements IPersonnel {
 				p.setP_Name(rs.getString("p_Name"));
 				p.setP_Pass(rs.getString("P_Pass"));
 				p.setP_Score(rs.getDouble("p_Score"));
-				p.setInGroup(rs.getString("inGroup"));				
+				p.setInGroup(rs.getString("P_InGroup"));				
 				list.add(p);
 			}
 		} catch (SQLException e) {
@@ -56,7 +56,7 @@ public class PersonnelDao implements IPersonnel {
 				p.setP_Name(rs.getString("p_Name"));
 				p.setP_Pass(rs.getString("p_Pass"));
 				p.setP_Score(rs.getDouble("p_Score"));
-				p.setInGroup(rs.getString("inGroup"));	
+				p.setInGroup(rs.getString("P_InGroup"));	
 				p.setP_ID(rs.getString("p_ID"));
 			}
 		} catch (SQLException e) {
@@ -72,7 +72,7 @@ public class PersonnelDao implements IPersonnel {
 	public void InsertPersonnel(Personnel p) {
 		// TODO Auto-generated method stub
 		util.getConnection();
-		sql="insert into Personnel values(?,?,?,?)";
+		sql="insert into Personnel values(?,?,?,?,?)";
 		List<Object> params=new ArrayList<Object>();
 		params.add(p.getP_ID());
 		params.add(p.getP_Name());

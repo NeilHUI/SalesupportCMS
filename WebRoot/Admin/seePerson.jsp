@@ -6,7 +6,7 @@ pageEncoding="UTF-8"%>
 
 <head>
 	<meta charset="utf-8"/>
-	<title>维修设备</title>
+	<title>查看维修人员</title>
 	
 	<link rel="stylesheet" href="css/layout.css" type="text/css" media="screen" />
 	<!--[if lt IE 9]>
@@ -48,17 +48,9 @@ pageEncoding="UTF-8"%>
     $(function(){
         $('.column').equalHeight();
     });
-	</script>
-	<script type="text/javascript">
-		function del(id) {
-			if(confirm("确定要删除吗？")) {
-				location.href = "admin!deleterepair.action?arepair.Repair_ID=" + id;
-			}
-		}
-	</script>
+</script>
 
 </head>
-
 
 <body>
 
@@ -75,7 +67,7 @@ pageEncoding="UTF-8"%>
 			<!-- <a class="logout_user" href="#" title="Logout">Logout</a> -->
 		</div>
 		<div class="breadcrumbs_container">
-			<article class="breadcrumbs"><a href="dashboard.jsp">系统管理</a> <div class="breadcrumb_divider"></div> <a class="current">维修订单</a></article>
+			<article class="breadcrumbs"><a href="dashboard.jsp">维修人员管理</a> <div class="breadcrumb_divider"></div> <a class="current">查看维修人员</a></article>
 		</div>
 	</section><!-- end of secondary bar -->
 	
@@ -88,14 +80,13 @@ pageEncoding="UTF-8"%>
 		<ul class="toggle">
 			<li class="icn_categories"><a href="admin!queryOrder.action">维修订单</a></li>
 			<li class="icn_settings"><a href="system!querySystemPlan.action">系统调度</a></li>
-			
 			<li class="icn_tags"><a href="monitor!querys.action">过程监控</a></li>
 		</ul>		
 		
 		<h3>维修人员管理</h3>
 		<ul class="toggle">
 			<li class="icn_view_users"><a href="personnel!queryAllPerson.action">查看维修人员</a></li>
-			<li class="icn_add_user"><a href="addPerson.jsp">添加维修人员</a></li>
+			<li class="icn_add_user"><a href="addPerson.jsp">添加维修人员</a></li>		
 			<li class="icn_profile"><a href="#">维修人员历史贡献</a></li>
 		</ul>
 
@@ -108,89 +99,43 @@ pageEncoding="UTF-8"%>
 	
 	<section id="main" class="column">
 		
-		<h4 class="alert_info">优先审核提示信息！</h4>
-		
+		<h4 class="alert_warning">请谨慎操作！</h4>
 		
 		<article class="module width_full">
-		<header><h3 class="tabs_involved">维修列表</h3>
-		<ul class="tabs">
-   			<li><a href="#tab1">审核通过</a></li>
-    		<li><a href="#tab2">未审核</a></li>
-		</ul>
-		</header>
-
-		<div class="tab_container">
-			<div id="tab1" class="tab_content">
-			<table class="tablesorter" cellspacing="0"> 
-			<thead> 
-				<tr> 
-   					<th></th> 
-    				<th>设备SN</th> 
-    				<th>维修人</th>
-    				<th>维修开始时间</th> 
-    				<th>维修结束时间</th> 
-    				<th>维修状态</th>
-    				<th>操作</th> 
-				</tr> 
-			</thead> 
-			<tbody> 
-			 <s:iterator value="listY">
-				<tr> 
-   					<td><input type="checkbox"></td> 
-    				<td><s:property value="OrderName" /></td> 
-    				<td><s:property value="PName" /></td>
-    				<td><s:property value="startTime" /></td> 
-    				<td><s:property value="endTime" /></td> 
-    				<td><s:property value="state" /></td>
-    				<td><a href="javascript:del('<s:property value="repairID"/>')"><input type="image" src="images/icn_alert_error.png" title="删除"></a></td> 
-				</tr> 
-				</s:iterator>
-			</tbody> 
-			</table>
-			</div><!-- end of #tab1 -->
-			
-			<div id="tab2" class="tab_content">
-			<table class="tablesorter" cellspacing="0"> 
-			<thead> 
-				<tr> 
-   					<th></th> 
-    				<th>设备SN</th> 
-    				<th>维修描述</th> 
-    				<th>申请时间</th>
-    				<th>申请人</th> 
-    				<th>电话</th>
-    				<th>操作</th> 
-				</tr> 
-			</thead> 
-			<tbody> 
-			  <s:iterator value="listN">
-				<tr> 
-   					<td><input type="checkbox"></td> 
-    				<td><s:property value="orderName" /></td> 
-    				<td><s:property value="orderDes" /></td> 
-    				<td><s:property value="orderTime" /></td> 
-    				<td><s:property value="pname" /></td> 
-    				<td><s:property value="phone" /></td>
-    				<td><a href="admin!updaterepair.action?arepair.Repair_ID=<s:property value='repairID'/>"><input type="image" src="images/icn_alert_success.png" title="通过" ></a> 
-    				<a href="javascript:del('<s:property value="repairID"/>')"><input type="image" src="images/icn_alert_error.png" title="删除"></a></td> 
-				</tr> 		
-			  </s:iterator>
-			</tbody> 
-			</table>
-
-			</div><!-- end of #tab2 -->
-			
-		</div><!-- end of .tab_container -->
-		
-		</article><!-- end of content manager article -->
-		
-		
+			<header><h3>维修人员列表</h3></header>
+			<div class="module_content">
+				<div id="tab2" class="tab_content">
+					<table class="tablesorter" cellspacing="0"> 
+					<thead> 
+						<tr> 
+		   					<th></th> 
+		    				<th>维修人姓名</th> 
+		    				<th>所在分组</th> 
+		    				<th>维修量</th> 
+		    				<th>评价成绩</th> 
+		    				<th>操作</th>
+						</tr> 
+					</thead> 
+					<tbody> 
+						<s:iterator value="listPerson">
+						<tr> 
+		   					<td><input type="checkbox"></td> 
+		    				<td><s:property value="P_Name" /></td> 
+		    				<td><s:property value="" />第二组</td> 
+		    				<td><s:property value="" />55</td> 
+		    				<td><s:property value="P_Score" /></td> 
+		    				<td><a href="personnel!preupdate.action?myper.id=<s:property value="P_ID" />"><input type="image" src="images/icn_edit.png" title="Edit"></a>
+		    				<a href="personnel!deletePersonnel.action?myper.id=<s:property value="P_ID" />"><input type="image" src="images/icn_trash.png" title="Trash"></a></td> 
+						</tr> 
+						</s:iterator>
+					</tbody> 
+					</table>
+				</div><!-- end of #tab2 -->
+				<div class="clear"></div>
+			</div>
+		</article><!-- end of stats article -->
 		
 		<div class="clear"></div>
-		
-		
-		<h4 class="alert_warning">A Warning Alert</h4>
-			
 		<div class="spacer"></div>
 	</section>
 

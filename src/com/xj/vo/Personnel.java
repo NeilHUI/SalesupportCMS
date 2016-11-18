@@ -17,8 +17,8 @@ public class Personnel {
 	public String getP_Name() {
 		return P_Name;
 	}
-	public void setP_Name(String p_Name) {
-		P_Name = p_Name;
+	public void setP_Name(String P_Name) {
+		this.P_Name = P_Name;
 	}
 	public String getP_Pass() {
 		return P_Pass;
