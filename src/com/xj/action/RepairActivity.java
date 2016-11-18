@@ -41,6 +41,7 @@ public class RepairActivity {
 		repSer.InsertRepair(r);
 		return queryById();
 	}
+	//Ìí¼Ó·´À¡±í
 	public String addFeeBack() throws Exception{
 		fb.setFB_ID(r.getP_ID());
 		feeSer.UpdateFeedBack(fb);

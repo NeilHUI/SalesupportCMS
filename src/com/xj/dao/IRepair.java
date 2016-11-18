@@ -17,4 +17,9 @@ public interface IRepair {
 	public void UpdateRepair(Repair r);
 	
 	public List<Repair> QueryByUser(String u);
+	
+	public List<Repair> querryAllNo();
+	
+	public List<Repair> querryAllU(String u);
+	
 }

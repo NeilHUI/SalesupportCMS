@@ -12,12 +12,28 @@
 		
 	</package>
 	<package name="admin" namespace="/Admin" extends="default">
-		
+		<action name="Resource" class="com.xj.action.ResourceAction">
+			<result name="part_all">part_all.jsp</result>
+			<result name="part_update">part_update.jsp</result>
+		</action>
 		<action name="admin" class="com.xj.action.AdminAction">
 			<result name="index">index.jsp</result>
 			<result name="error">login.jsp</result>
 			<result name="listRepair">index.jsp</result>
 		</action>
+		
+
+		
+		<action name="ShenQing" class="com.xj.action.ShenQingAction">
+			<result name="ShenQing_add">ShenQing_add.jsp</result>
+			<result name="ShenQing_add_res">ShenQing_add_res.jsp</result>
+			<result name="ShenQing_all">ShenQing_all.jsp</result>
+			<result name="ShenQing_part_all">ShenQing_part_all.jsp</result>
+			<result name="ShenQing_query_byManId">ShenQing_query_byManId.jsp</result>
+			<result name="ShenQing_query">ShenQing_query.jsp</result>
+		</action>
+		
+		
 	</package>
 	<package name="repair" namespace="/" extends="default">
 		
@@ -25,6 +41,15 @@
 			<result name="listTable">repair_table.jsp</result>
             <result name="querry_success">management_detail.jsp</result>
             <result name="del_success">userManagement.jsp</result>
+		</action>
+	</package> 
+	<package name="serviceperson" namespace="/" extends="default">
+		
+		<action name="service" class="com.xj.action.SerPerAction">
+		    <result name="login_success">servicePer.jsp</result>
+			<result name="serlistTable">servicePer.jsp</result>
+			<result name="login_false">404_page.jsp</result>
+         
 		</action>
 	</package> 
 

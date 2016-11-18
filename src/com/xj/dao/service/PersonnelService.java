@@ -12,7 +12,10 @@ private PersonnelDao Pdao=new PersonnelDao();
 	public List<Personnel> QueryAllPersonnel(){
 		return Pdao.QueryAllPersonnel();
 	}
-	
+	public String valUser(Personnel s){
+		return Pdao.valUser(s);
+		
+	}
 	public Personnel QueryPersonnel(String id){
 		return Pdao.QueryPersonnelByID(id);
 	}

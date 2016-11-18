@@ -110,4 +110,30 @@ public class PersonnelDao implements IPersonnel {
 		util.close();
 	}
 
+	@Override
+	public String valUser(Personnel s) {
+		util.getConnection();
+		sql = "select P_ID from Personnel where P_Name=? and P_Pass=?";
+		List<Object> params = new ArrayList<Object>();
+		params.add(s.getP_Name());
+		params.add(s.getP_Pass());
+		rs = util.query(sql, params);
+		String string = "";
+		try {
+			
+			if(rs.next()){
+				string= rs.getString("P_ID");
+			}
+			else{
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			util.close();
+		}
+		return string;
+	}
+
 }

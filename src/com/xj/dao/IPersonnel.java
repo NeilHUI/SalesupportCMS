@@ -16,4 +16,6 @@ public interface IPersonnel {
 	public void DeletePersonnel(String id);
 
 	public void UpdatePersonnel(Personnel p);
+	
+	public String valUser(Personnel s);
 }

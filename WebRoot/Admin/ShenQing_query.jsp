@@ -1,11 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" 
 pageEncoding="UTF-8"%> 
 <%@ taglib prefix="s" uri="/struts-tags"%>
-<!doctype html>
-<html lang="ch">
-
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://"
+			+ request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
+%>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
 <head>
-	<meta charset="utf-8"/>
+	<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="cache-control" content="no-cache">
+	<meta http-equiv="expires" content="0">
+	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+	<meta http-equiv="description" content="This is my page">
+	<!--
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	-->
 	<title>Salesupport</title>
 	
 	<link rel="stylesheet" href="css/layout.css" type="text/css" media="screen" />
@@ -48,8 +60,17 @@ pageEncoding="UTF-8"%>
     $(function(){
         $('.column').equalHeight();
     });
-</script>
-
+	</script>
+	<script type="text/javascript">
+		function queryByManId() {
+				location.href = "ShenQing!queryByManId.action?del_index=" + document.getElementById('MainId').value;
+		}
+	</script>
+	<script type="text/javascript">
+		function queryByPartId() {
+				location.href = "ShenQing!queryByPartId.action?del_index=" + document.getElementById('PartId').value;
+		}
+	</script>
 </head>
 
 
@@ -58,7 +79,7 @@ pageEncoding="UTF-8"%>
 	<header id="header">
 		<hgroup>
 			<h1 class="site_title"><a href="index.html">设备维修后台管理</a></h1>
-			<h2 class="section_title">Dashboard</h2><div class="btn_view_site"><a href="#">退出</a></div>
+			<h2 class="section_title">Dashboard</h2><div class="btn_view_site"><a href="login.jsp">退出</a></div>
 		</hgroup>
 	</header> <!-- end of header bar -->
 	
@@ -68,7 +89,7 @@ pageEncoding="UTF-8"%>
 			<!-- <a class="logout_user" href="#" title="Logout">Logout</a> -->
 		</div>
 		<div class="breadcrumbs_container">
-			<article class="breadcrumbs"><a href="index.jsp">后台管理 Admin</a> <div class="breadcrumb_divider"></div> <a class="current">Dashboard</a></article>
+			<article class="breadcrumbs"><a href="index.html">后台管理 Admin</a> <div class="breadcrumb_divider"></div> <a class="current">Dashboard</a></article>
 		</div>
 	</section><!-- end of secondary bar -->
 	
@@ -79,7 +100,7 @@ pageEncoding="UTF-8"%>
 		<hr/>
 		<h3>系统管理</h3>
 		<ul class="toggle">
-			<li class="icn_categories"><a href="admin!queryOrder.action">维修订单管理</a></li>
+			<li class="icn_categories"><a href="#">维修订单管理</a></li>
 			<li class="icn_settings"><a href="#">系统调度</a></li>
 			<li class="icn_photo"><a href="#">订单状态查看</a></li>
 			<li class="icn_tags"><a href="#">过程监控</a></li>
@@ -91,6 +112,7 @@ pageEncoding="UTF-8"%>
 			<li class="icn_view_users"><a href="#">查看维修人员</a></li>
 			<li class="icn_profile"><a href="#">维修人员历史贡献</a></li>
 		</ul>
+
 		<h3>物品</h3>
 		<ul class="toggle">
 			<li class="icn_add_user"><a href="Resource!queryAll.action">查询物品信息</a></li>
@@ -101,94 +123,37 @@ pageEncoding="UTF-8"%>
 		<footer>
 			<hr />
 			<p><strong>Copyright &copy; 2016 后台管理 Admin</strong></p>
-			<p>Theme by <a href="http://www.medialoot.com">TechDream</a></p>
+			<p>Theme by TechDream</p>
 		</footer>
 	</aside><!-- end of sidebar -->
 	
 	<section id="main" class="column">
 		
-		<h4 class="alert_info">这个地方可以放置提示信息！</h4>
-		
+		<h4 class="alert_warning">加快进度吧！</h4>
 		
 		<article class="module width_full">
-		<header><h3 class="tabs_involved">维修列表</h3>
-		<ul class="tabs">
-   			<li><a href="#tab1">审核通过</a></li>
-    		<li><a href="#tab2">未审核</a></li>
-		</ul>
-		</header>
+		<table align="center" border="0" width="60%">
+			<tr>
+				<td>姓名id</td>
+				<td ><input type="text" id="MainId"/></td>
+				<td><a href ="javascript:queryByManId()">维修员查找</a></td>
+			</tr>
+			<tr>
+				<td >物品id</td>
+				<td><input type="text" id="PartId"/></td>
+				<td ><a href ="javascript:queryByPartId()">物品查找</a></td>
+			</tr>
+			<tr>
+				<td colspan="3"><a href ="ShenQing!queryAll.action">只查找申请表，不包含物品及其数量</a></td>
+			</tr>
+			<tr>
+				<td colspan="3"><a href ="ShenQing!queryRepairPartAll.action">只查包含物品及其数量</a></td>
+			</tr>
+		</table>
+		</article><!-- end of stats article -->
 
-		<div class="tab_container">
-			<div id="tab1" class="tab_content">
-			<table class="tablesorter" cellspacing="0"> 
-			<thead> 
-				<tr> 
-   					<th></th> 
-    				<th>订单名</th> 
-    				<th>维修人</th>
-    				<th>维修开始时间</th> 
-    				<th>维修结束时间</th> 
-    				<th>维修状态</th>
-    				<th>操作</th> 
-				</tr> 
-			</thead> 
-			<tbody> 
-			 <s:iterator value="list">
-				<tr> 
-   					<td><input type="checkbox"></td> 
-    				<td><s:property value="Order_ID" /></td> 
-    				<td><s:property value="P_ID" /></td>
-    				<td><s:property value="Repair_StartT" /></td> 
-    				<td><s:property value="Repair_EndT" /></td> 
-    				<td><s:property value="Repair_State" /></td>
-    				<td><input type="image" src="images/icn_edit.png" title="Edit"><input type="image" src="images/icn_trash.png" title="Trash"></td> 
-				</tr> 
-				</s:iterator>
-			</tbody> 
-			</table>
-			</div><!-- end of #tab1 -->
-			
-			<div id="tab2" class="tab_content">
-			<table class="tablesorter" cellspacing="0"> 
-			<thead> 
-				<tr> 
-   					<th></th> 
-    				<th>订单名</th> 
-    				<th>订单描述</th> 
-    				<th>订单日期</th> 
-    				<th>申请用户</th>
-    				<th>操作</th> 
-				</tr> 
-			</thead> 
-			<tbody> 
-				<tr> 
-   					<td><input type="checkbox"></td> 
-    				<td>餐饮设备维修</td> 
-    				<td>修理筷子</td> 
-    				<td>2016-11-5</td> 
-    				<td>王五</td>
-    				<td><input type="image" src="images/icn_edit.png" title="Edit"><input type="image" src="images/icn_trash.png" title="Trash"></td> 
-				</tr> 		
-				
-			</tbody> 
-			</table>
-
-			</div><!-- end of #tab2 -->
-			
-		</div><!-- end of .tab_container -->
-		
-		</article><!-- end of content manager article -->
-		
-		
 		
 		<div class="clear"></div>
-		
-		
-		<h4 class="alert_warning">A Warning Alert</h4>
-		
-		<h4 class="alert_error">An Error Message</h4>
-		
-		<h4 class="alert_success">A Success Message</h4>
 		
 		
 		<div class="spacer"></div>
@@ -196,5 +161,4 @@ pageEncoding="UTF-8"%>
 
 
 </body>
-
 </html>
