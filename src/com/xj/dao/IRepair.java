@@ -22,4 +22,6 @@ public interface IRepair {
 	
 	public List<Repair> querryAllU(String u);
 	
+	public boolean updateOne(Object a,Object b,String c);
+	
 }

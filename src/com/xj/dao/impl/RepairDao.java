@@ -2,6 +2,7 @@ package com.xj.dao.impl;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -202,14 +203,15 @@ public class RepairDao implements IRepair {
 	}
 	public List<Repair> querryAllU(String u) {
 		util.getConnection();
-		sql="select * from RepairTable join Personnel on Personnel.P_ID=RepairTable.P_ID where Personnel.P_Name = ? ";
+		sql="select * from RepairTable join Personnel on Personnel.P_ID=RepairTable.P_ID where Personnel.P_ID = ? ";
 		List<Object> params=new ArrayList<Object>();
-		params.add("u");
+		params.add(u);
 		rs=util.query(sql, params);
 		List<Repair> list=new ArrayList<Repair>();
 		try {
 			while(rs.next()){
 				Repair a=new Repair();
+				
 				a.setRepair_ID(rs.getString("Repair_ID"));
 				a.setRepair_ISY(rs.getInt("Repair_ISY"));
 				a.setRepair_StartT(rs.getTimestamp("Repair_StartT"));
@@ -231,6 +233,19 @@ public class RepairDao implements IRepair {
 			util.close();
 		}
 		return list;
+	}
+
+
+	@Override
+	public boolean updateOne(Object a, Object b, String c) {
+		util.getConnection();
+		sql="update RepairTable set "+a+"=?  where Repair_ID=?";
+		List<Object> params=new ArrayList<Object>();
+		params.add(b);
+		params.add(c);
+		util.update(sql, params);
+		util.close();
+		return true;
 	}
 
 
